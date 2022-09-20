@@ -22,9 +22,7 @@ def read_data(filename, col_headers):
     dataset_path = '../dataset/'
     file_path = dataset_path + filename
     input_data = fetch_data(file_path)
-    # csv_filename = filename.replace('.txt', '.csv')
-    # np.savetxt(csv_filename, np.array(input_data), delimiter=',', fmt='%s', comments='', header=names)
-    df = pd.DataFrame(input_data, columns = col_headers)
+    df = pd.DataFrame(input_data, columns=col_headers)
     return df
 
 
@@ -33,9 +31,9 @@ def knn_implementation(train_dataset, test_dataset, k, metric):
     X_train = train_dataset.iloc[:, :-1].values
     y_train = train_dataset.iloc[:, -1].values
 
-    '''Normalize features so all of them can be uniformly evaluated'''
-    min_max_scaler = MinMaxScaler()
-    X_train = min_max_scaler.fit_transform(X_train)
+    # '''Normalize features so all of them can be uniformly evaluated'''
+    # min_max_scaler = MinMaxScaler()
+    # X_train = min_max_scaler.fit_transform(X_train)
 
     p = 0
     if metric == 'manhattan':
@@ -51,13 +49,13 @@ def knn_implementation(train_dataset, test_dataset, k, metric):
 
     '''Reading test data'''
     X_test = test_dataset.iloc[:, :].values
-    X_test = min_max_scaler.fit_transform(X_test)
+    # X_test = min_max_scaler.fit_transform(X_test)
 
     y_pred = classifier.predict(X_test)
     return y_pred
 
 
-def lib_output(k, metric):
+def library_output(k, metric):
     train_filename = '1a-training.txt'
     test_filename = '1a-test.txt'
 
