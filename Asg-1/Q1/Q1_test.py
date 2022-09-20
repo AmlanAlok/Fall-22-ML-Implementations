@@ -1,6 +1,6 @@
 import unittest
-from knn_with_library import library_output
-from Q1_b_knn_without_library import scratch_code_output
+from knn_with_sklearn import library_output
+from Q1_b_knn_without_ml_library import scratch_code_output
 import numpy as np
 
 
