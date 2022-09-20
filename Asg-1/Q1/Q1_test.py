@@ -35,13 +35,15 @@ class MyTestCase(unittest.TestCase):
         print(library_output(3, 'minkowski'))
         print(library_output(7, 'minkowski'))
 
-    def test_x1(self):
+    '''This test case matches my output to the output of the library'''
+    def test_correct_logic(self):
         for k in [1, 5, 7]:
             for metric in ['manhattan', 'euclidean', 'minkowski']:
                 self.assertEqual((library_output(k, metric) == scratch_code_output(k, metric)).all(), True)
 
     def test_for_students(self):
         self.assertEqual(True, (scratch_code_output(1, 'euclidean') == np.array(['W', 'M', 'M', 'W'])).all())
+
 
 if __name__ == '__main__':
     unittest.main()
