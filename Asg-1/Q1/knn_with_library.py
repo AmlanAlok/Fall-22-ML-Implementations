@@ -30,10 +30,12 @@ def knn_implementation(train_dataset, test_dataset, k, metric):
 
     X_train = train_dataset.iloc[:, :-1].values
     y_train = train_dataset.iloc[:, -1].values
+    X_test = test_dataset.iloc[:, :].values
 
-    # '''Normalize features so all of them can be uniformly evaluated'''
-    # min_max_scaler = MinMaxScaler()
-    # X_train = min_max_scaler.fit_transform(X_train)
+    '''Normalize features so all of them can be uniformly evaluated'''
+    min_max_scaler = MinMaxScaler()
+    X_train = min_max_scaler.fit_transform(X_train)
+    X_test = min_max_scaler.fit_transform(X_test)
 
     p = 0
     if metric == 'manhattan':
@@ -46,10 +48,6 @@ def knn_implementation(train_dataset, test_dataset, k, metric):
     '''KNN Classifier'''
     classifier = KNeighborsClassifier(n_neighbors=k, p=p)
     classifier.fit(X_train, y_train)
-
-    '''Reading test data'''
-    X_test = test_dataset.iloc[:, :].values
-    # X_test = min_max_scaler.fit_transform(X_test)
 
     y_pred = classifier.predict(X_test)
     return y_pred
