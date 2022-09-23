@@ -53,7 +53,6 @@ def data_structure_test(test_data):
                 'weight': float(dp[1]),
                 'age': float(dp[2])
             },
-            # 'knn': k_list,
             'output': []
         }
         i+=1
@@ -200,7 +199,7 @@ def make_prediction(k, distance_array):
         return '50-50 M/W'
 
 
-def Q1_a(k, metric):
+def Q1_B(k, metric):
     train_filename = '1a-training.txt'
     test_filename = '1a-test.txt'
 
@@ -215,7 +214,7 @@ def Q1_a(k, metric):
     test_np = normalize_test(test_np)
     test_data = data_structure_test(test_np)
 
-    y_pred_np = []
+    y_pred= []
 
     for tp in test_data:
 
@@ -226,15 +225,15 @@ def Q1_a(k, metric):
         elif metric == 'minkowski':
             distance_array = get_minkowski_distance(input_data, tp)
 
-        y_pred_np.append(make_prediction(k, distance_array))
+        y_pred.append(make_prediction(k, distance_array))
 
-    y_pred = np.array(y_pred_np)
-    return y_pred
+    y_pred_np = np.array(y_pred)
+    return y_pred_np
 
 
 if __name__ == '__main__':
 
     for k in [1, 3, 7]:
         for metric in ['manhattan', 'euclidean', 'minkowski']:
-            print('For k = ' + str(k) + ', metric = ' + metric + ' --> ' + str(Q1_a(k, metric)))
-            print('-------------------------- ')
+            print('For k = ' + str(k) + ', metric = ' + metric + ' --> ' + str(Q1_B(k, metric)))
+        print('---------------------------------------------------')
