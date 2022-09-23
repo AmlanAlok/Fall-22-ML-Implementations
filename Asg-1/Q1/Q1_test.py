@@ -28,6 +28,7 @@ class MyTestCase(unittest.TestCase):
             print(scratch_code_output(k, 'minkowski'))
             print('-----------------')
 
+
     def test_expected_output(self):
         print('')
         print(library_output(1, 'euclidean'))
