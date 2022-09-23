@@ -234,7 +234,7 @@ def Q1_a(k, metric):
 
 if __name__ == '__main__':
 
-    for k in [1, 5, 7]:
+    for k in [1, 3, 7]:
         for metric in ['manhattan', 'euclidean', 'minkowski']:
             print('For k = ' + str(k) + ', metric = ' + metric + ' --> ' + str(Q1_a(k, metric)))
             print('-------------------------- ')
