@@ -57,7 +57,7 @@ def library_output(k, metric):
     train_filename = '1a-training.txt'
     test_filename = '1a-test.txt'
 
-    training_col_header = ['height', 'weight', 'age', 'col']
+    training_col_header = ['height', 'weight', 'age', 'label']
     test_col_header = ['height', 'weight', 'age']
 
     train_df = read_data(train_filename, training_col_header)
@@ -65,3 +65,7 @@ def library_output(k, metric):
 
     predictions = knn_implementation(train_df, test_df, k, metric)
     return predictions
+
+
+if __name__ == '__main__':
+    library_output(1, 'euclidean')
