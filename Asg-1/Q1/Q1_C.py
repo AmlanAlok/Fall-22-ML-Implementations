@@ -1,6 +1,7 @@
 import math
 import numpy as np
 
+
 def clean_data(line):
     return line.replace('(', '').replace(')', '').replace(' ', '').strip().split(',')
 

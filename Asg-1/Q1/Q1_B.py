@@ -189,13 +189,10 @@ def make_prediction(k, distance_array):
     # print('M prob =', M_prob)
 
     if w_count > m_count:
-        # k_dict[CONST_PREDICTION] = 'W'
         return 'W'
     elif m_count > w_count:
-        # k_dict[CONST_PREDICTION] = 'M'
         return 'M'
     else:
-        # k_dict[CONST_PREDICTION] = '50-50 M/W'
         return '50-50 M/W'
 
 
