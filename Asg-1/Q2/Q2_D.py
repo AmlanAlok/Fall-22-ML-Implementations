@@ -205,7 +205,8 @@ def result_accuracy(y_pred):
 def Q2_C():
     filename = '1c-data.txt'
 
-    dataset_path = '../dataset/'
+    # dataset_path = '../dataset/'
+    dataset_path = 'Asg-1/dataset/'
     input_data = fetch_data(dataset_path + filename)
     input_np = np.array(input_data)
     input_np = normalize_train(input_np)
