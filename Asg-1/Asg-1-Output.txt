@@ -1,0 +1,33 @@
+
+
+
+amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations % python3 Asg-1/Q1/Q1_B.py
+For k = 1, metric = manhattan --> ['W' 'M' 'W' 'W']
+For k = 1, metric = euclidean --> ['W' 'M' 'M' 'W']
+For k = 1, metric = minkowski --> ['W' 'M' 'M' 'W']
+---------------------------------------------------
+For k = 3, metric = manhattan --> ['W' 'M' 'M' 'W']
+For k = 3, metric = euclidean --> ['W' 'M' 'M' 'W']
+For k = 3, metric = minkowski --> ['W' 'M' 'M' 'W']
+---------------------------------------------------
+For k = 7, metric = manhattan --> ['W' 'M' 'M' 'W']
+For k = 7, metric = euclidean --> ['W' 'M' 'W' 'W']
+For k = 7, metric = minkowski --> ['W' 'M' 'M' 'W']
+---------------------------------------------------
+amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations % python3 Asg-1/Q1/Q1_C.py
+For k = 1, Accuracy = 62.5
+For k = 3, Accuracy = 64.16666666666667
+For k = 5, Accuracy = 68.33333333333333
+For k = 7, Accuracy = 68.33333333333333
+For k = 9, Accuracy = 65.83333333333333
+For k = 11, Accuracy = 66.66666666666666
+END
+amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations % python3 Asg-1/Q1/Q1_D.py
+For k = 1, Accuracy = 57.49999999999999
+For k = 3, Accuracy = 60.0
+For k = 5, Accuracy = 57.49999999999999
+For k = 7, Accuracy = 62.5
+For k = 9, Accuracy = 65.0
+For k = 11, Accuracy = 64.16666666666667
+END
+amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations %
