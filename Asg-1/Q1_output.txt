@@ -1,6 +1,4 @@
 
-
-
 amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations % python3 Asg-1/Q1/Q1_B.py
 For k = 1, metric = manhattan --> ['W' 'M' 'W' 'W']
 For k = 1, metric = euclidean --> ['W' 'M' 'M' 'W']
@@ -29,5 +27,17 @@ For k = 5, Accuracy = 57.49999999999999
 For k = 7, Accuracy = 62.5
 For k = 9, Accuracy = 65.0
 For k = 11, Accuracy = 64.16666666666667
+END
+amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations %
+
+
+amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations % python3 Asg-1/Q2/Q2_B.py
+Predictions = ['W', 'M', 'W', 'W']
+END
+amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations % python3 Asg-1/Q2/Q2_C.py
+Accuracy = 71.66666666666667
+END
+amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations % python3 Asg-1/Q2/Q2_D.py
+Accuracy = 70.83333333333334
 END
 amlanalok@Amlans-MacBook-Pro Fall-22-ML-Implementations %
