@@ -236,6 +236,7 @@ def scratch_code_output():
         y_pred_np.append(output['prediction'])
 
     y_pred = np.array(y_pred_np)
+    print(y_pred)
     return y_pred
 
 
