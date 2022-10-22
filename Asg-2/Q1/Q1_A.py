@@ -89,43 +89,18 @@ def get_parameter_matrix_with_depth_and_size(k, depth, size=128):
 
 def main():
     print('program started')
-    k = 4
+    max_k = 10
     max_d = 6
-    # x = np.linspace(-3, 3, 1000)
 
-    training_size = [128, 20]  # max = 128
+    training_size = [128]  # max = 128
 
     for size in training_size:
-
-        line_names = []
-
-        # for d in [1]:
-        for d in range(max_d + 1):
-            parameter_matrix = train_linear_regression_model(k, d, size)
-
-            print('parameter matrix for d = ', d)
-            print(parameter_matrix)
-            '''You can save np array using this function'''
-            # np.savetxt('./Q1/parameter-d-'+str(d)+'.csv', parameter_matrix, delimiter=',')
-
-            ''' plotting graph '''
-            # plt.plot(x, prediction(x, parameter_matrix, k, d))
-
-            ''' Error Calculation '''
-            # mse = error_calculation_test_data(parameter_matrix, k, d)
-
-            # line_names.append('d=' + str(d) + ', MSE=' + str(mse))
-            print('A')
-
-        # # Reading the csv into an array
-        # # firstarray = np.genfromtxt("firstarray.csv", delimiter=",")
-        # plt.title('Training Data Size =' + str(size))
-        # plt.legend(line_names)
-        # # plt.savefig('python/Q1/Q1-size-'+str(size))     # with python command
-        # plt.savefig('Q1/Q1-size-' + str(size))  # debug
-        # # plt.savefig('./Q1/Q1-size-' + str(size) + '-overfitting')
-        # # plt.show()
-        # # plt.close()
+        for k in range(1, max_k + 1):
+            print('\nk = ', k, '--------------------\n')
+            for d in range(max_d + 1):
+                parameter_matrix = train_linear_regression_model(k, d, size)
+                print('parameter matrix for d = ', d)
+                print(parameter_matrix)
 
     print('program ended')
     print('--------------------------')
