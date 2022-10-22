@@ -125,12 +125,13 @@ def normalize(height, weight):
 
 
 def main():
+    print('Q3_D ----------------------')
     print('program started')
     alpha = 0.01
-    iterations = 5
+    iterations = 20
 
-    filename = '../datasets/Q3_data.txt'
-    # filename = 'datasets/Q3_data.txt'
+    # filename = '../datasets/Q3_data.txt'
+    filename = 'datasets/Q3_data.txt'
     input_data = fetch_data(filename)
     error_array = []
 

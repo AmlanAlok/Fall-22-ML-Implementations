@@ -73,8 +73,8 @@ def prediction(parameter_matrix, feature_matrix):
 
 
 def train(alpha, iterations):
-    filename = '../datasets/Q3_data.txt'  # debug
-    # filename = 'datasets/Q3_data.txt'   # command line
+    # filename = '../datasets/Q3_data.txt'  # debug
+    filename = 'datasets/Q3_data.txt'   # command line
     input_data = fetch_data(filename)
 
     height_data, weight_data, age_data, y_data = separate_input_output(input_data)
@@ -109,7 +109,8 @@ def train(alpha, iterations):
     ax.set_xlabel('Height')
     ax.set_ylabel('Weight')
     ax.set_zlabel('Age')
-    plt.savefig('Q3_B')  # debug
+    # plt.savefig('Q3_B')  # debug
+    plt.savefig('Q3/Q3_B')  # debug
     # plt.savefig('python/Q3/Q3_plot')    # command line
     plt.show()
 
