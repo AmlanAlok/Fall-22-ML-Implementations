@@ -10,3 +10,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+'''
+Question
+
+What differences do you see and why might they occur?
+
+'''

@@ -46,3 +46,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+'''
+Question
+
+Compare the error results and try to determine for what “function depths” overfitting might be a problem. 
+Which ”function depth” would you consider the best prediction function and why.
+
+Answer
+'''
