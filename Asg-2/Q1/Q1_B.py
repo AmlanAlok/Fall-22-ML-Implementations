@@ -29,7 +29,7 @@ def Q1_B_sol(k, size):
 def main():
     print('Q1_B --------------------')
     max_k = 10
-    for k in range(1, max_k+1):
+    for k in range(1, max_k + 1):
         print('Generating plots for k =', k)
         Q1_B_sol(k, 128)
 

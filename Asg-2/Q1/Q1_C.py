@@ -6,8 +6,8 @@ from Q1_B import prediction
 
 
 def error_calculation_test_data(parameter_matrix, k, d):
-    filename = '../datasets/Q1_C_test.txt'  # debug
-    # filename = 'datasets/Q1_c_test_data.txt'  # python command
+    # filename = '../datasets/Q1_C_test.txt'  # debug
+    filename = 'datasets/Q1_C_test.txt'  # python command
     test_data = fetch_data(filename)
 
     x_data, y_true = separate_input_output(test_data)
@@ -25,7 +25,7 @@ def Q1_C_sol(k, size):
     line_names = []
 
     for d in range(7):
-        parameter_matrix = get_parameter_matrix_with_depth_and_size(d, size)
+        parameter_matrix = get_parameter_matrix_with_depth_and_size(k, d, size)
         mse, x_data, y_prediction = error_calculation_test_data(parameter_matrix, k, d)
         print('For d =', d, 'MSE = ', mse)
 
@@ -36,12 +36,17 @@ def Q1_C_sol(k, size):
 
     plt.title('Training Data Size =' + str(size))
     plt.legend(line_names)
-    plt.savefig('Q1_C_pic_size_'+str(size))
+    plt.savefig('Q1/C_Pic/Q1_C_pic_size_' + str(size) + '_k_' + str(k))
+    # plt.savefig('Q1_C_pic_size_'+str(size))
+    plt.clf()
 
 
 def main():
     print('Q1_C --------------------')
-    Q1_C_sol(4, 128)
+    max_k = 10
+    for k in range(1, max_k + 1):
+        print('Generating plots for k =', k)
+        Q1_C_sol(k, 128)
 
 
 if __name__ == "__main__":

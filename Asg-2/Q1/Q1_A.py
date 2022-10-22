@@ -67,7 +67,7 @@ def separate_input_output_limit(input_data, limit=129):
 
 def train_linear_regression_model(k, d, size):
     # filename = '../datasets/Q1_B_train.txt'  # debug
-    filename = 'datasets/Q1_B_train.txt'        # python command
+    filename = 'datasets/Q1_B_train.txt'  # python command
     input_data = fetch_data(filename)
 
     # x_data, y_data = separate_input_output(input_data)
