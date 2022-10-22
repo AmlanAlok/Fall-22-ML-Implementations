@@ -83,31 +83,7 @@ def train_linear_regression_model(k, d, size):
     return parameter_matrix
 
 
-# def prediction(x, parameter_matrix, k, d):
-#     x_data = x.reshape(x.shape[0], 1)
-#     feature_vector = get_feature_vector(x_data, k, d)
-#     prediction = np.matmul(feature_vector, parameter_matrix)
-#
-#     return prediction
-
-
-# def error_calculation_test_data(parameter_matrix, k, d):
-#     filename = '../datasets/Q1_c_test_data.txt'  # debug
-#     # filename = 'datasets/Q1_c_test_data.txt'  # python command
-#     test_data = fetch_data(filename)
-#
-#     x_data, y_true = separate_input_output(test_data)
-#
-#     y_prediction = prediction(x_data, parameter_matrix, k, d)
-#
-#     ''' calculating mean square error '''
-#     mse = np.square(np.subtract(y_true, y_prediction)).mean()
-#
-#     return mse
-
-
-def get_parameter_matrix_with_depth_and_size(depth, size=128):
-    k = 4
+def get_parameter_matrix_with_depth_and_size(k, depth, size=128):
     return train_linear_regression_model(k, depth, size)
 
 
