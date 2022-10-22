@@ -22,23 +22,24 @@ def fetch_data(file_name):
 
 
 '''Uses all Data'''
-def separate_input_output(input_data, leave_pos):
 
+
+def separate_input_output(input_data, leave_pos):
     td = np.array(input_data)
 
     h_test = td[leave_pos, 0]
     w_test = td[leave_pos, 1]
     a_test = td[leave_pos, 2]
 
-    height_data_points = np.concatenate((td[:leave_pos, 0], td[leave_pos+1:, 0]))
+    height_data_points = np.concatenate((td[:leave_pos, 0], td[leave_pos + 1:, 0]))
     height_data = height_data_points.reshape(height_data_points.shape[0], 1)
     height_data = height_data.astype('float64')
 
-    weight_data_points = np.concatenate((td[:leave_pos, 1], td[leave_pos+1:, 1]))
+    weight_data_points = np.concatenate((td[:leave_pos, 1], td[leave_pos + 1:, 1]))
     weight_data = weight_data_points.reshape(weight_data_points.shape[0], 1)
     weight_data = weight_data.astype('float64')
 
-    age_data_points = np.concatenate((td[:leave_pos, 2], td[leave_pos+1:, 2]))
+    age_data_points = np.concatenate((td[:leave_pos, 2], td[leave_pos + 1:, 2]))
     age_data = age_data_points.reshape(age_data_points.shape[0], 1)
     age_data = age_data.astype('float64')
 
@@ -54,7 +55,6 @@ def separate_input_output(input_data, leave_pos):
 
 
 def get_feature_matrix(height_data, weight_data, age_data):
-
     return np.array([1, height_data, weight_data, age_data], dtype='float64').reshape(4, 1)
 
 
@@ -68,11 +68,10 @@ def change_y_data(y_data):
 
 
 def sigmoid(x):
-    return 1/(1+np.exp(-1*x))
+    return 1 / (1 + np.exp(-1 * x))
 
 
 def prediction(parameter_matrix, feature_matrix):
-
     linear_regression_output = np.matmul(np.transpose(parameter_matrix), feature_matrix)
 
     sigmoid_output = sigmoid(linear_regression_output)
@@ -84,7 +83,6 @@ def prediction(parameter_matrix, feature_matrix):
 
 
 def train(alpha, iterations, height_data, weight_data, age_data, y_data_01):
-
     parameter_matrix = get_random_parameter_matrix()
     # y_data_01 = change_y_data(y_data)
 
@@ -93,7 +91,6 @@ def train(alpha, iterations, height_data, weight_data, age_data, y_data_01):
         error_array = []
 
         for i in range(height_data.shape[0]):
-
             feature_matrix = get_feature_matrix(height_data[i], weight_data[i], age_data[i])
 
             y_prediction, sig_output, linear_regression_output = prediction(parameter_matrix, feature_matrix)
@@ -106,7 +103,7 @@ def train(alpha, iterations, height_data, weight_data, age_data, y_data_01):
             parameter_matrix = parameter_matrix - partial_derivative
 
         error_np = np.array(error_array)
-        accuracy = 100 - (np.sum(np.square(error_np))/error_np.size)*100
+        accuracy = 100 - (np.sum(np.square(error_np)) / error_np.size) * 100
         # print('Itr =', k, ' accuracy =', accuracy)
 
     # print(parameter_matrix)
@@ -115,7 +112,6 @@ def train(alpha, iterations, height_data, weight_data, age_data, y_data_01):
 
 
 def normalize(height, weight, age):
-
     h_mean = height.mean()
     h_std = height.std()
     height -= h_mean
@@ -135,19 +131,18 @@ def normalize(height, weight, age):
 
 
 def main():
-
     print('program started')
     alpha = 0.01
     iterations = 5
 
-    # filename = '../datasets/Q3_data.txt'
-    filename = 'datasets/Q3_data.txt'
+    filename = '../datasets/Q3_data.txt'  # debug
+    # filename = 'datasets/Q3_data.txt'       # command line
     input_data = fetch_data(filename)
     error_array = []
 
     for i in range(len(input_data)):
-
-        height_data, weight_data, age_data, y_data_01, h_test, w_test, a_test, y_true = separate_input_output(input_data, i)  # put i here
+        height_data, weight_data, age_data, y_data_01, h_test, w_test, a_test, y_true = separate_input_output(
+            input_data, i)  # put i here
 
         height_data, weight_data, age_data = normalize(height_data, weight_data, age_data)
 
@@ -172,5 +167,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
