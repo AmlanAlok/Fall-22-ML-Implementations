@@ -43,8 +43,9 @@ def separate_input_output_limit(input_data, limit=129):
 
 
 def weight_function(x, gamma, query_point):
-    ans = np.exp(-1 * (np.square(x - query_point) / 2 * (gamma ** 2)))
-
+    numerator = np.square(x - query_point)
+    denominator = (2 * (gamma ** 2))
+    ans = np.exp(-1 * (numerator/ denominator))
     return ans
 
 
@@ -81,6 +82,7 @@ def train_and_prediction(x, gamma, size, x_data, y_data):
     y_prediction = prediction(parameter_matrix, query_point)
 
     return y_prediction[0]
+
 
 # if __name__ == "__main__":
 #     main()
