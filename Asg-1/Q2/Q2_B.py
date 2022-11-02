@@ -233,7 +233,7 @@ def Q2_B():
     test_filename = '1a-test.txt'
 
     # dataset_path = '../dataset/'
-    dataset_path = 'Asg-1/dataset/'
+    dataset_path = './dataset/'
     input_data = fetch_data(dataset_path + train_filename)
     input_np = np.array(input_data)
     input_np = normalize_train(input_np)
