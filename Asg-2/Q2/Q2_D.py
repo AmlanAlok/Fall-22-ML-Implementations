@@ -3,7 +3,7 @@ from Q2_C import Q2_C_sol
 
 
 def main():
-    print('Q1_D --------------------')
+    print('Q2_D --------------------')
     Q2_B_sol(20)
     Q2_C_sol(20)
 
