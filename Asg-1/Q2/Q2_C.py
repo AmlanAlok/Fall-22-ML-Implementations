@@ -1,5 +1,6 @@
 import math
 import numpy as np
+import sys
 
 OUTPUT = 'output'
 INPUT = 'input'
@@ -81,6 +82,15 @@ def change_data_structure(input_data):
     return data_list
 
 
+def prob_calc(multiply_components):
+
+    p = 1
+    for x in multiply_components:
+        p += np.log(x)
+
+    return p
+
+
 def get_prediction(input_data, input_dict, test_input, exclude_age=False):
     output_labels = input_dict.keys()
 
@@ -110,7 +120,7 @@ def get_prediction(input_data, input_dict, test_input, exclude_age=False):
         input_dict[label][AGE_VAR] = input_dict[label][AGE_MEAN_SQR_TOTAL] / (input_dict[label][COUNT] - 1)
 
     test_input['probability'] = {}
-    max_probability = 0.0
+    max_probability = -sys.maxsize - 1
 
     for label in output_labels:
         test_input['probability'][label] = {
@@ -129,15 +139,23 @@ def get_prediction(input_data, input_dict, test_input, exclude_age=False):
         The greater probability is chosen
         '''
         if exclude_age:
+            multiply_components = [input_dict[label][CLASS_PROBABILITY],
+                                   test_input['probability'][label]['P(height|C)'],
+                                   test_input['probability'][label]['P(weight|C)']]
             test_input['probability'][label]['final_estimate'] = input_dict[label][CLASS_PROBABILITY] * \
                                                                  test_input['probability'][label]['P(height|C)'] * \
                                                                  test_input['probability'][label]['P(weight|C)']
         else:
+            multiply_components = [input_dict[label][CLASS_PROBABILITY],
+                                   test_input['probability'][label]['P(height|C)'],
+                                   test_input['probability'][label]['P(weight|C)'],
+                                   test_input['probability'][label]['P(age|C)']]
             test_input['probability'][label]['final_estimate'] = input_dict[label][CLASS_PROBABILITY] * \
                                                                  test_input['probability'][label]['P(height|C)'] * \
                                                                  test_input['probability'][label]['P(weight|C)'] * \
                                                                  test_input['probability'][label]['P(age|C)']
 
+        test_input['probability'][label]['final_estimate'] = prob_calc(multiply_components)
         # print('For', label, 'Final Estimate =', test_input['probability'][label]['final_estimate'])
 
         if test_input['probability'][label]['final_estimate'] > max_probability:
@@ -205,8 +223,8 @@ def result_accuracy(y_pred):
 def Q2_C():
     filename = '1c-data.txt'
 
-    dataset_path = '../dataset/'
-    # dataset_path = 'Asg-1/dataset/'
+    # dataset_path = '../dataset/'
+    dataset_path = 'Asg-1/dataset/'
     input_data = fetch_data(dataset_path + filename)
     input_np = np.array(input_data)
     input_np = normalize_train(input_np)
