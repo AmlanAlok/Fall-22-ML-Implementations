@@ -89,6 +89,7 @@ def get_parameter_matrix_with_depth_and_size(k, depth, size=128):
 
 def main():
     print('program started')
+    print('Q1_A --------------------')
     max_k = 10
     max_d = 6
 
