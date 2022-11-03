@@ -58,6 +58,47 @@ def change_y_data(y_data):
     return value_01
 
 
+def final_prediction(height_data, weight_data, age_data, parameter_matrix):
+
+    y_pred_arr = []
+
+    for i in range(height_data.shape[0]):
+        feature_matrix = get_feature_matrix(height_data[i], weight_data[i], age_data[i])
+
+        y_pred_arr.append(prediction(parameter_matrix, feature_matrix))
+
+    y_pred = np.array(y_pred_arr)
+    y_pred = y_pred.reshape(y_pred.shape[0], 1)
+    return y_pred
+
+
+def combine_result(height_data, weight_data, age_data, y_pred):
+
+    r1 = np.concatenate((height_data, weight_data), axis=1)
+    r2 = np.concatenate((r1, age_data), axis=1)
+    r3 = np.concatenate((r2, y_pred), axis=1)
+    return r3
+
+
+def split_predictions_by_label(combined_data):
+
+    filter_1 = combined_data[:, 3] == 1
+    filter_0 = combined_data[:, 3] == 0
+    pred_1 = combined_data[filter_1]
+    pred_0 = combined_data[filter_0]
+    return pred_1, pred_0
+
+
+def get_surface_func(parameter_matrix, x, y):
+
+    bias = parameter_matrix[0]
+    h_coeff = parameter_matrix[1]
+    w_coeff = parameter_matrix[2]
+    a_coeff = parameter_matrix[3]
+    z = -1*(bias + h_coeff*x + w_coeff*y)/a_coeff
+    return z
+
+
 def sigmoid(x):
     return 1 / (1 + np.exp(-1 * x))
 
@@ -73,8 +114,8 @@ def prediction(parameter_matrix, feature_matrix):
 
 
 def train(alpha, iterations):
-    # filename = '../datasets/Q3_data.txt'  # debug
-    filename = 'datasets/Q3_data.txt'   # command line
+    filename = '../datasets/Q3_data.txt'  # debug
+    # filename = 'datasets/Q3_data.txt'   # command line
     input_data = fetch_data(filename)
 
     height_data, weight_data, age_data, y_data = separate_input_output(input_data)
@@ -96,6 +137,7 @@ def train(alpha, iterations):
             partial_derivative = alpha * err * feature_matrix
 
             parameter_matrix = parameter_matrix - partial_derivative
+            # print('p')
 
         error_np = np.array(error_array)
         accuracy = 100 - (np.sum(np.square(error_np)) / error_np.size) * 100
@@ -103,14 +145,28 @@ def train(alpha, iterations):
 
     # print(parameter_matrix)
 
+    y_pred = final_prediction(height_data, weight_data, age_data, parameter_matrix)
+    combined_data = combine_result(height_data, weight_data, age_data, y_pred)
+    pred_1, pred_0 = split_predictions_by_label(combined_data)
+
     ax = plt.axes(projection='3d')
-    ax.scatter3D(height_data, weight_data, age_data)
+    # ax.scatter3D(height_data, weight_data, age_data)
+    ax.scatter3D(pred_1[:, 0], pred_1[:, 1], pred_1[:, 2], cmap='green')
+    ax.scatter3D(pred_0[:, 0], pred_0[:, 1], pred_0[:, 2], cmap='red')
+
+    h_vals = np.linspace(1.3, 2.0, 100)
+    w_vals = np.linspace(60, 100, 100)
+
+    X, Y = np.meshgrid(h_vals, w_vals)
+    Z = get_surface_func(parameter_matrix, X, Y)
+
+    ax.plot_surface(X, Y, Z)
 
     ax.set_xlabel('Height')
     ax.set_ylabel('Weight')
     ax.set_zlabel('Age')
-    # plt.savefig('Q3_B')  # debug
-    plt.savefig('Q3/Q3_B')  # debug
+    plt.savefig('Q3_B')  # debug
+    # plt.savefig('Q3/Q3_B')  # debug
     # plt.savefig('python/Q3/Q3_plot')    # command line
     plt.show()
 
