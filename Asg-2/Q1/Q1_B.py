@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from Q1_A import get_parameter_matrix_with_depth_and_size, get_feature_vector
+from Q1_A import *
 
 
 def prediction(x, parameter_matrix, k, d):
@@ -12,17 +12,23 @@ def prediction(x, parameter_matrix, k, d):
 
 
 def Q1_B_sol(k, size):
-    x = np.linspace(0, 1, 1000)
+    x = np.linspace(-3, 3, 1000)
     line_names = []
 
+    filename = '../datasets/Q1_B_train.txt'  # python command
+    input_data = fetch_data(filename)
+    x_data, y_data = separate_input_output_limit(input_data, size)
+
     for d in range(7):
-        parameter_matrix = get_parameter_matrix_with_depth_and_size(k, d)
-        plt.plot(x, prediction(x, parameter_matrix, k, d))
+        parameter_matrix = get_parameter_matrix_with_depth_and_size(k, d, size)
+        # plt.plot(x, prediction(x, parameter_matrix, k, d))
+        plt.scatter(x_data, prediction(x_data, parameter_matrix, k, d))
         line_names.append('d=' + str(d))
 
     plt.title('Training Data Size =' + str(size))
     plt.legend(line_names)
-    plt.savefig('Q1/B_Pic/Q1_B_pic_size_' + str(size) + '_k_' + str(k))
+    plt.savefig('./B_Pic/Q1_B_pic_size_' + str(size) + '_k_' + str(k))
+    # plt.savefig('Q1/B_Pic/Q1_B_pic_size_' + str(size) + '_k_' + str(k))
     plt.clf()
 
 

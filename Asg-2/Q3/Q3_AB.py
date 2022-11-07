@@ -114,8 +114,8 @@ def prediction(parameter_matrix, feature_matrix):
 
 
 def train(alpha, iterations):
-    # filename = '../datasets/Q3_data.txt'  # debug
-    filename = 'datasets/Q3_data.txt'   # command line
+    filename = '../datasets/Q3_data.txt'  # debug
+    # filename = 'datasets/Q3_data.txt'   # command line
     input_data = fetch_data(filename)
 
     height_data, weight_data, age_data, y_data = separate_input_output(input_data)

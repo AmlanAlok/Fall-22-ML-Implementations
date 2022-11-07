@@ -8,8 +8,9 @@ def error_calculation_test_data(y_true, y_prediction):
 
 def Q2_C_sol(size):
     gamma = 0.204
-    # filename = '../datasets/Q1_C_test.txt'  # debug
-    filename = 'datasets/Q1_B_train.txt'        # command
+    filename = '../datasets/Q1_C_test.txt'  # debug
+    # filename = '../datasets/Q1_B_train.txt'  # debug
+    # filename = 'datasets/Q1_C_test.txt'        # command
     input_data = fetch_data(filename)
     x_data, y_true = separate_input_output_limit(input_data, size)
 

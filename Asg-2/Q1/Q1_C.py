@@ -6,8 +6,8 @@ from Q1_B import prediction
 
 
 def error_calculation_test_data(parameter_matrix, k, d):
-    # filename = '../datasets/Q1_C_test.txt'  # debug
-    filename = 'datasets/Q1_C_test.txt'  # python command
+    filename = '../datasets/Q1_C_test.txt'  # debug
+    # filename = 'datasets/Q1_C_test.txt'  # python command
     test_data = fetch_data(filename)
 
     x_data, y_true = separate_input_output(test_data)
@@ -36,7 +36,8 @@ def Q1_C_sol(k, size):
 
     plt.title('Training Data Size =' + str(size))
     plt.legend(line_names)
-    plt.savefig('Q1/C_Pic/Q1_C_pic_size_' + str(size) + '_k_' + str(k))
+    # plt.savefig('Q1/C_Pic/Q1_C_pic_size_' + str(size) + '_k_' + str(k))
+    # plt.savefig('./C_Pic/Q1_C_pic_size_' + str(size) + '_k_' + str(k))
     # plt.savefig('Q1_C_pic_size_'+str(size))
     plt.clf()
 
@@ -45,8 +46,9 @@ def main():
     print('Q1_C --------------------')
     max_k = 10
     for k in range(1, max_k + 1):
-        print('Generating plots for k =', k)
+        print('For k =', k)
         Q1_C_sol(k, 128)
+        print('---------------------')
 
 
 if __name__ == "__main__":

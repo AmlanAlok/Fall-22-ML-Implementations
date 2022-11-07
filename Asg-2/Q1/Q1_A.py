@@ -66,8 +66,8 @@ def separate_input_output_limit(input_data, limit=129):
 
 
 def train_linear_regression_model(k, d, size):
-    # filename = '../datasets/Q1_B_train.txt'  # debug
-    filename = 'datasets/Q1_B_train.txt'  # python command
+    filename = '../datasets/Q1_B_train.txt'  # debug
+    # filename = 'datasets/Q1_B_train.txt'  # python command
     input_data = fetch_data(filename)
 
     # x_data, y_data = separate_input_output(input_data)
@@ -83,7 +83,7 @@ def train_linear_regression_model(k, d, size):
     return parameter_matrix
 
 
-def get_parameter_matrix_with_depth_and_size(k, depth, size=128):
+def get_parameter_matrix_with_depth_and_size(k, depth, size):
     return train_linear_regression_model(k, depth, size)
 
 
@@ -100,8 +100,8 @@ def main():
             print('\nk = ', k, '--------------------\n')
             for d in range(max_d + 1):
                 parameter_matrix = train_linear_regression_model(k, d, size)
-                print('parameter matrix for d = ', d)
-                print(parameter_matrix)
+                # print('parameter matrix for d = ', d)
+                # print(parameter_matrix)
 
     print('program ended')
     print('--------------------------')

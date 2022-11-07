@@ -10,7 +10,7 @@ def main():
         Q1_B_sol(k, 20)
 
     for k in range(1, max_k + 1):
-        print('Generating plots for k =', k)
+        print('For k =', k)
         Q1_C_sol(k, 20)
 
 

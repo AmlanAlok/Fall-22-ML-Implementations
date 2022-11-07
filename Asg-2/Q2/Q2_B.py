@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 
 def Q2_B_sol(size):
     gamma = 0.204
-    # filename = '../datasets/Q1_B_train.txt'  # debug
-    filename = 'datasets/Q1_B_train.txt'        # command
+    filename = '../datasets/Q1_B_train.txt'  # debug
+    # filename = 'datasets/Q1_B_train.txt'        # command
     input_data = fetch_data(filename)
     x_data, y_data = separate_input_output_limit(input_data, size)
     y_prediction, y_array = [], []

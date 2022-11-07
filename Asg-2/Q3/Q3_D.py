@@ -130,8 +130,8 @@ def main():
     alpha = 0.01
     iterations = 20
 
-    # filename = '../datasets/Q3_data.txt'
-    filename = 'datasets/Q3_data.txt'
+    filename = '../datasets/Q3_data.txt'
+    # filename = 'datasets/Q3_data.txt'
     input_data = fetch_data(filename)
     error_array = []
 

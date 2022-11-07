@@ -134,10 +134,10 @@ def main():
     print('Q3_C ----------------------')
     print('program started')
     alpha = 0.01
-    iterations = 5
+    iterations = 20
 
-    # filename = '../datasets/Q3_data.txt'  # debug
-    filename = 'datasets/Q3_data.txt'       # command line
+    filename = '../datasets/Q3_data.txt'  # debug
+    # filename = 'datasets/Q3_data.txt'       # command line
     input_data = fetch_data(filename)
     error_array = []
 
