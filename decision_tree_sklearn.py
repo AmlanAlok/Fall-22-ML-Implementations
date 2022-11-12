@@ -18,7 +18,7 @@ def read_data_ass1(filename):
 
 filename = './datasets/Q1_train.txt'
 X, y = read_data_ass1(filename)
-model = DecisionTreeClassifier(criterion="entropy", max_depth=8)
+model = DecisionTreeClassifier(criterion="entropy", max_depth=5)
 model.fit(X, y)
 plt.figure(figsize=(10,8))
 tree.plot_tree(model, fontsize=9)
