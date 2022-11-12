@@ -119,14 +119,14 @@ def main():
 
     saved_tree = {}
 
-    print('Accuracy    |   Train   |      Test    |')
-    for depth in range(1, 10):
-        # print('DEPTH =', depth)
+    for depth in range(1, 6):
+        print('DEPTH =', depth)
         decsiontree_clf = DecisionTreeClassifier(depth)
         decsiontree_clf.train(x_train, y_train)
         train_preds = decsiontree_clf.predict(x_train)
         test_preds = decsiontree_clf.predict(x_test)
-        print('DEPTH =', depth, '     ', accuray(y_train, train_preds), '     ', accuray(y_test, test_preds))
+        print('Accuracy | Train =', accuray(y_train, train_preds), '| Test = ', accuray(y_test, test_preds))
+        # print('DEPTH =', depth, '     ', accuray(y_train, train_preds), '     ', accuray(y_test, test_preds))
         saved_tree[depth] = decsiontree_clf
 
     print('END')
